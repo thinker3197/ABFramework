@@ -18,9 +18,7 @@
  // OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  
  var ABalytics = (function (window, document, undefined) {
-     /* exported ABalytics */
- 
-     // Returns a classic or universal analytics wrapper object
+     
      var analyticsWrapper = function (ga, gaq) {
          if (!ga && !gaq) {
              throw new ReferenceError('ABalytics - ga or _gaq not found.');
@@ -30,12 +28,12 @@
      };
  
      analyticsWrapper.prototype.push = function (experimentName, variantName, slot) {
-         // prefer ga to _gaq if both are defined
+         
          if (this.ga) {
-             // https://developers.google.com/analytics/devguides/collection/analyticsjs/custom-dims-mets
+           
              this.ga('set', 'dimension' + slot, variantName);
          } else {
-             // https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingCustomVariables
+            
              this.gaq.push(['_setCustomVar', slot, experimentName, variantName, 2]);
          }
      };
@@ -79,8 +77,7 @@
  
      return {
          changes: [],
-         // for each experiment, load a variant if already saved for this session, or pick a random one
-         // slot can either be a dimension or a custom variable
+        
          init: function (config, slot) {
              var gaWrapper = new analyticsWrapper(window.ga, window._gaq),
                  experiment,
@@ -116,7 +113,7 @@
                  slot++;
              }
          },
-         // apply the selected variants for each experiment
+         
          applyHtml: function () {
              var elements,
                  change,
