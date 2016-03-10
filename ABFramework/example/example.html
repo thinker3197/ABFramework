@@ -40,6 +40,7 @@
             {
                 name: 'ab_compel',
                 "ab_test1": "This text will compel you to click the button below!"
+                "url":"a.jpg"
             },
             {
                 name: 'ab_convince',
@@ -51,9 +52,20 @@
 
     _gaq.push(['_trackPageview']);
   </script>
+  <style>
+  .background{
+     width:100%;
+  height:100%;
+  background-image: url;
+
+  }
+ 
+
+  </style>
 </head>
-<body>
-  <h1>This is a very interesting A/B test</h1>
+<body >
+<div class="background">
+  <center><h1>This is a very interesting A/B test</h1></center>
 
   <p class="ab_test1">
     The user will never see this
@@ -74,6 +86,7 @@
     window.onload = function() {
       ABalytics.applyHtml();
     };
+    </div>
   </script>
 </body>
 </html>
