@@ -40,7 +40,7 @@
             {
                 name: 'ab_compel',
                 "ab_test1": "This text will compel you to click the button below!"
-                "url":"a.jpg"
+              
             },
             {
                 name: 'ab_convince',
@@ -67,7 +67,7 @@
 <div class="background">
   <center><h1>This is a very interesting A/B test</h1></center>
 
-  <p class="ab_test1">
+  <p class="ab_test1" id="ab_test12">
     The user will never see this
   </p>
 
@@ -82,11 +82,16 @@
     ABalytics.applyHtml();
   };
 </script>
-  <script type="text/javascript">
-    window.onload = function() {
-      ABalytics.applyHtml();
-    };
-    </div>
-  </script>
+ 
+ <script type="text/javascript">
+   window.onload = function() {
+     ABalytics.applyHtml();
+     var a=document.getElmentById('ab_test12');
+     if("This text will compel you to click the button below!".localeCompare(a.innerHTML)==0);
+       document.body.style.backgroundImage="a.jpg";
+   else
+       document.body.style.backgroundImage="b.jpg";
+   };
+ </script>
 </body>
 </html>
